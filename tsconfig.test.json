@@ -1,0 +1,13 @@
+{
+  // Testes em TS compilados para dist-test/ e rodados com `node --test` (o navegador é simulado
+  // onde precisa). Importam "@bfocus/monitor" pelo "exports": rodam contra o artefato CONSTRUÍDO.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "./test",
+    "outDir": "./dist-test",
+    "declaration": false,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["node"]
+  },
+  "include": ["test/**/*.ts"]
+}

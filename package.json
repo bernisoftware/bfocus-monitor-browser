@@ -1,0 +1,93 @@
+{
+  "name": "@bfocus/monitor",
+  "version": "0.1.0",
+  "description": "Monitoramento de erros do bFocus para o navegador — erros da página viram demanda, agrupados por causa e ligados ao cliente afetado.",
+  "license": "MIT",
+  "author": "Berni Software",
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/cjs/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    },
+    "./react": {
+      "import": {
+        "types": "./dist/esm/react.d.ts",
+        "default": "./dist/esm/react.js"
+      },
+      "require": {
+        "types": "./dist/cjs/react.d.ts",
+        "default": "./dist/cjs/react.js"
+      }
+    },
+    "./vue": {
+      "import": {
+        "types": "./dist/esm/vue.d.ts",
+        "default": "./dist/esm/vue.js"
+      },
+      "require": {
+        "types": "./dist/cjs/vue.d.ts",
+        "default": "./dist/cjs/vue.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "react": ["./dist/cjs/react.d.ts"],
+      "vue": ["./dist/cjs/vue.d.ts"]
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "clean": "node scripts/rm.mjs dist dist-test",
+    "build": "node scripts/rm.mjs dist && tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && node scripts/cjs-package.mjs",
+    "build:test": "node scripts/rm.mjs dist-test && tsc -p tsconfig.test.json",
+    "test": "npm run build && npm run build:test && node --test --test-concurrency=1 dist-test/*.test.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json --noEmit",
+    "sync:core": "node scripts/sync-core.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=16.8"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "keywords": [
+    "bfocus",
+    "monitoring",
+    "error-tracking",
+    "browser",
+    "react",
+    "vue"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bernisoftware/bfocus.git",
+    "directory": "monitor/browser"
+  },
+  "homepage": "https://bfocus.com.br",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/react": "^19.0.0",
+    "react": "^19.0.0",
+    "typescript": "~5.9.2"
+  }
+}
