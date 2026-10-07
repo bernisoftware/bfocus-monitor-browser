@@ -80,8 +80,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bernisoftware/bfocus.git",
-    "directory": "monitor/browser"
+    "url": "git+https://github.com/bernisoftware/bfocus-monitor-browser.git"
   },
   "homepage": "https://bfocus.com.br",
   "devDependencies": {
