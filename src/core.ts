@@ -68,7 +68,7 @@ export interface Monitor {
   close: () => void
 }
 
-export const SDK_VERSION = '0.1.0'
+export const SDK_VERSION = '0.1.1'
 const DEFAULT_API = 'https://api.bfocus.com.br'
 const MAX_PER_PAGE = 50
 const DEDUPE_MS = 30_000
